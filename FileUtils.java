@@ -1,8 +1,19 @@
 import io.*;
 import java.io.*;
+import java.util.Scanner;
 
 public class FileUtils
 {
+
+	public static void loadFile( Student[] studentArray, Scanner input)
+	{
+		String inputFile;
+		System.out.print("Enter input file name:>");
+		inputFile = input.nextLine();
+		fillFromFile( studentArray, inputFile);
+	}
+
+
 	//opens and loops through file, fills array of students, returns number read
 	//reference lecture 2, slide 25
 	public static int fillFromFile( Student[] studentArray, String inputFile)
@@ -45,7 +56,7 @@ public class FileUtils
 		}
 
 		return num;
-		
+
 	}
 
 }
