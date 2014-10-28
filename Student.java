@@ -48,7 +48,7 @@ public class Student
 	//to string, for testing and writing to file
 	public String toString()
 	{
-		String thisStudent = "" + studentNo + name;
+		String thisStudent = "" + studentNo + "," + name;
 		return thisStudent;
 	}
 
