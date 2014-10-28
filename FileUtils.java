@@ -21,7 +21,6 @@ public class FileUtils
 		FileInputStream fileStrm = null;
 		InputStreamReader rdr;
 		BufferedReader bufRdr;
-		Student thisStudent;
 		int num;
 		String line;
 		num = 0;
@@ -35,8 +34,7 @@ public class FileUtils
 			while( line != null)
 			{
 				num++;
-				thisStudent = new Student( line);
-				studentArray[num - 1] = thisStudent;
+				studentArray[num - 1] = new Student( line);
 				line = bufRdr.readLine();
 			}
 			fileStrm.close();
