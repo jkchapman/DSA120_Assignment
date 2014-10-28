@@ -26,7 +26,7 @@ public class Student
 	public Student( String row)
 	{
 
-		String rowValues[] = row.split(",");
+		String[] rowValues = row.split(",");
 		studentNo = Integer.parseInt(rowValues[0]);
 		setName( rowValues[1]);
 
@@ -43,6 +43,13 @@ public class Student
 		{
 			this.name = name;
 		}
+	}
+
+	//to string, for testing and writing to file
+	public String toString()
+	{
+		String thisStudent = "" + studentNo + name;
+		return thisStudent;
 	}
 
 }
