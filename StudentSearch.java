@@ -13,6 +13,7 @@ public class StudentSearch
 
 	public static void main( String[] args)
 	{
+		String inputFile;
 		Scanner input;
 		int selection = 0;
 
@@ -37,6 +38,9 @@ public class StudentSearch
 		switch( selection)
 		{
 			case 1:
+				System.out.print("Enter input file name:>");
+				inputFile = input.nextLine();
+				System.out.println(inputFile);
 				break;
 			case 2:
 				break;
