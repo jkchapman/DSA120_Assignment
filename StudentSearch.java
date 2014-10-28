@@ -13,6 +13,7 @@ public class StudentSearch
 
 	public static void main( String[] args)
 	{
+		Student[] studentArray = new Student[10000];
 		String inputFile;
 		Scanner input;
 		int selection = 0;
@@ -40,13 +41,15 @@ public class StudentSearch
 			case 1:
 				System.out.print("Enter input file name:>");
 				inputFile = input.nextLine();
-				System.out.println(inputFile);
+				FileUtils.fillFromFile( studentArray, inputFile);
 				break;
 			case 2:
 				break;
 			case 3:
 				break;
 			case 4:
+				break;
+			case 5:
 				break;
 		}
 
