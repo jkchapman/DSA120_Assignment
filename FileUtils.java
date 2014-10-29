@@ -1,6 +1,7 @@
 import io.*;
 import java.io.*;
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
 public class FileUtils
 {
@@ -8,13 +9,44 @@ public class FileUtils
 	//Method for choosing option 1. returns number of students read.
 	public static int loadFile( Student[] studentArray)
 	{
-		Scanner input = new Scanner(System.in);
-		int numRead;
-		String inputFile;
-		System.out.print("Enter input file name:>");
-		inputFile = input.nextLine();
-		numRead = fillFromFile( studentArray, inputFile);
-		SearchAndSort.mergeSort( studentArray, numRead);
+		boolean tryAgain;
+		int numRead = 0;
+		String inputFile;		
+		do
+		{
+			Scanner stringInput = new Scanner(System.in);
+			System.out.print("Enter input file name:>");
+			inputFile = stringInput.nextLine();
+			tryAgain = false;
+			try
+			{
+				numRead = fillFromFile( studentArray, inputFile);
+				SearchAndSort.mergeSort( studentArray, numRead);
+			}
+			catch( IllegalArgumentException e)
+			{
+				int selection = 0;
+				do
+				{
+					try
+					{
+						Scanner intInput = new Scanner(System.in);
+						System.out.println("1\t- Try Again");
+						System.out.println("2\t- Back to Main Menu");
+						System.out.print("Choice:>");
+						selection = intInput.nextInt();
+						if( selection == 1)
+						{
+							tryAgain = true;
+						}
+					}
+					catch( InputMismatchException e1)
+					{
+						System.out.println("Please choose integer option 1 or 2");
+					}
+				} while( selection != 1 && selection != 2);
+			}
+		} while (tryAgain);
 		return numRead;
 	}
 
@@ -43,7 +75,7 @@ public class FileUtils
 			}
 			fileStrm.close();
 		}
-		catch(IOException e)
+		catch( IOException e)
 		{
 			if(fileStrm != null)
 			{
@@ -55,10 +87,9 @@ public class FileUtils
 				{}
 			}
 			System.out.println("Error in processing file: " + e.getMessage());
+			throw new IllegalArgumentException("INVALID FILE NAME");
 		}
-
 		return num;
-
 	}
 
 }
