@@ -45,6 +45,12 @@ public class Student
 		}
 	}
 
+	//accessor for student no
+	public int getStudentNo()
+	{
+		return studentNo;
+	}
+
 	//to string, for testing and writing to file
 	public String toString()
 	{
