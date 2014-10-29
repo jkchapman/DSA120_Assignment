@@ -51,6 +51,12 @@ public class Student
 		return studentNo;
 	}
 
+	//accessor for name
+	public String getName()
+	{
+		return name;
+	}
+
 	//to string, for testing and writing to file
 	public String toString()
 	{
