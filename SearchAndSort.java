@@ -16,7 +16,14 @@ public class SearchAndSort
 			System.out.print("Enter student number to find:>");
 			targetStudentNo = input.nextInt();
 			matchIdx = binarySearch( sortedArray, numOfStudents, targetStudentNo);
-			System.out.println( "" + sortedArray[matchIdx].getStudentNo() + "\t" + sortedArray[matchIdx].getName());
+			if (matchIdx == -1)
+			{
+				System.out.println("Student not found!");
+			}
+			else
+			{
+				System.out.println( "" + sortedArray[matchIdx].getStudentNo() + "\t" + sortedArray[matchIdx].getName());
+			}
 		}
 		catch ( InputMismatchException e)
 		{
