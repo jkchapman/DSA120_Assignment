@@ -5,7 +5,8 @@ import java.util.Scanner;
 public class FileUtils
 {
 
-	public static void loadFile( Student[] studentArray, Scanner input)
+	//Method for choosing option 1. returns number of students read.
+	public static int loadFile( Student[] studentArray, Scanner input)
 	{
 		int numRead;
 		String inputFile;
@@ -13,6 +14,7 @@ public class FileUtils
 		inputFile = input.nextLine();
 		numRead = fillFromFile( studentArray, inputFile);
 		SearchAndSort.mergeSort( studentArray, numRead);
+		return numRead;
 	}
 
 	//opens and loops through file, fills array of students, returns number read
