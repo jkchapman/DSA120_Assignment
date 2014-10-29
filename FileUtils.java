@@ -7,12 +7,13 @@ public class FileUtils
 
 	public static void loadFile( Student[] studentArray, Scanner input)
 	{
+		int numRead;
 		String inputFile;
 		System.out.print("Enter input file name:>");
 		inputFile = input.nextLine();
-		fillFromFile( studentArray, inputFile);
+		numRead = fillFromFile( studentArray, inputFile);
+		SearchAndSort.mergeSort( studentArray, numRead);
 	}
-
 
 	//opens and loops through file, fills array of students, returns number read
 	//reference lecture 2, slide 25
