@@ -66,4 +66,33 @@ public class SearchAndSort
         }
     }//merge()
 
+    //binary search. returns the index of matched student no. -1 if not found.
+    public static int binarySearch( Student[] sortedArray, int numOfStudents, int targetStudentNo)
+    {
+    	boolean found = false;
+    	int matchIdx = -1;
+    	int lowerBd = 0;
+    	int upperBd = numOfStudents;
+    	int chckIdx;
+
+    	while( !found && lowerBd <= upperBd)
+    	{
+    		chckIdx = ( lowerBd + upperBd) / 2;
+    		if( sortedArray[chckIdx].getStudentNo() < targetStudentNo)
+    		{
+    			lowerBd = chckIdx + 1;
+    		}
+    		else if( sortedArray[chckIdx].getStudentNo() > targetStudentNo)
+    		{
+    			upperBd = chckIdx - 1;
+    		}
+    		else
+    		{
+    			matchIdx = chckIdx;
+    			found = true;
+    		}
+    	}
+    	return matchIdx;
+    }
+
 }
