@@ -16,7 +16,7 @@ public class FileUtils
 
 	//opens and loops through file, fills array of students, returns number read
 	//reference lecture 2, slide 25
-	public static int fillFromFile( Student[] studentArray, String inputFile)
+	private static int fillFromFile( Student[] studentArray, String inputFile)
 	{
 		FileInputStream fileStrm = null;
 		InputStreamReader rdr;
