@@ -6,8 +6,9 @@ public class FileUtils
 {
 
 	//Method for choosing option 1. returns number of students read.
-	public static int loadFile( Student[] studentArray, Scanner input)
+	public static int loadFile( Student[] studentArray)
 	{
+		Scanner input = new Scanner(System.in);
 		int numRead;
 		String inputFile;
 		System.out.print("Enter input file name:>");

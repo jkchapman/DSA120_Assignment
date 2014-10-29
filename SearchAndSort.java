@@ -1,18 +1,27 @@
 import io.*;
 import java.io.*;
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
 public class SearchAndSort
 {
 
-	public static void searchSingleStudent( Student[] sortedArray, int numOfStudents, Scanner input)
+	public static void searchSingleStudent( Student[] sortedArray, int numOfStudents)
 	{
 		int targetStudentNo;
 		int matchIdx;
-		System.out.print("Enter student number to find:>");
-		targetStudentNo = Integer.parseInt(input.nextLine());
-		matchIdx = binarySearch( sortedArray, numOfStudents, targetStudentNo);
-		System.out.println( "" + sortedArray[matchIdx].getStudentNo() + "\t" + sortedArray[matchIdx].getName());
+		try
+		{
+			Scanner input = new Scanner(System.in);
+			System.out.print("Enter student number to find:>");
+			targetStudentNo = input.nextInt();
+			matchIdx = binarySearch( sortedArray, numOfStudents, targetStudentNo);
+			System.out.println( "" + sortedArray[matchIdx].getStudentNo() + "\t" + sortedArray[matchIdx].getName());
+		}
+		catch ( InputMismatchException e)
+		{
+			System.out.println("Error: Must enter a integer number to search for. Try again.");
+		}
 	}
 
 	//binary search. returns the index of matched student no. -1 if not found.
