@@ -23,6 +23,7 @@ public class StudentSearch
 	{
 		Student[] studentArray = new Student[10000];
 		int selection = 0;
+		int numOfStudents = 0;
 		Scanner input;
 		input = new Scanner(System.in);
 
@@ -42,9 +43,10 @@ public class StudentSearch
 			switch( selection)
 			{
 				case 1:
-					FileUtils.loadFile( studentArray, input);
+					numOfStudents = FileUtils.loadFile( studentArray, input);
 					break;
 				case 2:
+					SearchAndSort.searchSingleStudent( studentArray, numOfStudents, input);
 					break;
 				case 3:
 					break;
