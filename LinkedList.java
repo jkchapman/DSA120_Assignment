@@ -42,6 +42,21 @@ public class LinkedList
 		}
 	}
 
+	//accessor peek first element
+	public Student peekFirst()
+	{
+		Student first;
+		if( !isEmpty())
+		{
+			first = head.student;
+		}
+		else
+		{
+			throw new IllegalArgumentException("List is empty!");
+		}
+		return first;
+	}
+
 	public boolean isEmpty()
 	{
 		return (head == null);
