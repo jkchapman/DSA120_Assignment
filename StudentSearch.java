@@ -26,6 +26,7 @@ public class StudentSearch
 		int selection = 0;
 		int numOfStudents = 0;
 		Scanner input;
+		LinkedList results;
 
 		do
 		{
@@ -50,7 +51,8 @@ public class StudentSearch
 						numOfStudents = FileUtils.loadFile( studentArray);
 						break;
 					case 2:
-						SearchAndSort.searchSingleStudent( studentArray, numOfStudents);
+						results = new LinkedList();
+						SearchAndSort.searchSingleStudent( studentArray, numOfStudents, results);
 						break;
 					case 3:
 						break;
