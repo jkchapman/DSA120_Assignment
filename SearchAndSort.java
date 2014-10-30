@@ -6,7 +6,7 @@ import java.util.InputMismatchException;
 public class SearchAndSort
 {
 
-	public static void searchSingleStudent( Student[] sortedArray, int numOfStudents)
+	public static void searchSingleStudent( Student[] sortedArray, int numOfStudents, LinkedList results)
 	{
 		int targetStudentNo;
 		int matchIdx;
@@ -22,6 +22,7 @@ public class SearchAndSort
 			}
 			else
 			{
+                results.insertLast( sortedArray[matchIdx]);
 				System.out.println( "" + sortedArray[matchIdx].getStudentNo() + "\t" + sortedArray[matchIdx].getName());
 			}
 		}
