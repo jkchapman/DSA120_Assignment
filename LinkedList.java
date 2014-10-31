@@ -4,12 +4,12 @@ public class LinkedList
 	//Class for each node
 	private class ListNode
 	{
-		public Student student;
+		public Object value;
 		public ListNode next;
 
-		public ListNode( Student student)
+		public ListNode( Object value)
 		{
-			this.student = student;
+			this.value = value;
 			next = null;
 		}
 	}
@@ -24,9 +24,9 @@ public class LinkedList
 	}
 
 	//mutator - insert last
-	public void insertLast( Student student)
+	public void insertLast( Object value)
 	{
-		ListNode newNode = new ListNode( student);
+		ListNode newNode = new ListNode( value);
 		if( isEmpty())
 		{
 			head = newNode;
@@ -43,12 +43,12 @@ public class LinkedList
 	}
 
 	//accessor peek first element
-	public Student peekFirst()
+	public Object peekFirst()
 	{
-		Student first;
+		Object first;
 		if( !isEmpty())
 		{
-			first = head.student;
+			first = head.value;
 		}
 		else
 		{
