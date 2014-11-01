@@ -60,4 +60,32 @@ public class BinarySearchTree
 		return val;
 	}
 
+	public void insert( String key, Object value)
+	{
+		insertRecursive( key, value, root);
+	}
+
+	private TreeNode insertRecursive( String key, Object value, TreeNode currNode)
+	{
+		TreeNode upDateNode = currNode;
+		if( currNode == null)
+		{
+			TreeNode newNode = new TreeNode( key, value);
+			upDateNode = newNode;
+		}
+		else if( key.equals(currNode.key))
+		{
+			throw new IllegalArgumentException("This key already in use!");
+		}
+		else if( key.compareTo( currNode.key) < 0)
+		{
+			currNode.leftChild = insertRecursive( key, value, currNode.leftChild);
+		}
+		else
+		{
+			currNode.rightChild = insertRecursive( key, value, currNode.rightChild);
+		}
+		return upDateNode;
+	}
+
 }
