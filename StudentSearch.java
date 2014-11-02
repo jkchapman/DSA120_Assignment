@@ -22,8 +22,8 @@ public class StudentSearch
 
 	private static void mainMenu()
 	{
-		BinarySearchTree searchTree = new BinarySearchTree();
-		Student[] studentArray = new Student[10000];
+		BinarySearchTree searchTree = null;
+		Student[] studentArray = null;
 		int selection = 0;
 		int numOfStudents = 0;
 		Scanner input;
@@ -45,6 +45,8 @@ public class StudentSearch
 				switch( selection)
 				{
 					case 1:
+						searchTree = new BinarySearchTree();
+						studentArray = new Student[10000];
 						numOfStudents = FileUtils.loadFile( studentArray, searchTree);
 						break;
 					case 2:
@@ -52,8 +54,12 @@ public class StudentSearch
 						SearchAndSort.searchSingleStudent( studentArray, numOfStudents, results);
 						break;
 					case 3:
+						results = new LinkedList();
+						SearchAndSort.searchListOfStudents( searchTree, results);
 						break;
 					case 4:
+						break;
+					case 5:
 						break;
 					default:
 						System.out.println("Please choose function 1 to 5.");
