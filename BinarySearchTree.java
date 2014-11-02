@@ -47,7 +47,7 @@ public class BinarySearchTree
 			//System.out.println(ii);
 			throw new NoSuchElementException("Key " + key + " not found");
 		}
-		else if( key.equals(currNode.key))
+		else if( key.startsWith(currNode.key))
 		{
 			val = currNode.value;
 		}
