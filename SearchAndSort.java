@@ -124,4 +124,14 @@ public class SearchAndSort
         }
     }//merge()
 
+    private static void fillTree( BinarySearchTree tree, Student[] A, int numOfStudents)
+    {
+
+        for(int ii = 0; ii < numOfStudents; ii++)
+        {
+            tree.insert( A[ii].getName(), A[ii]);
+        }
+
+    }
+
 }
