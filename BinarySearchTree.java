@@ -26,39 +26,38 @@ public class BinarySearchTree
 	}
 
 	private TreeNode root;
+	private TreeNode matchNode;
 
 	public BinarySearchTree()
 	{
 		root = null;
+		matchNode = null;
 	}
 
-	public Object find(String key)
+	public Object find( String key)
 	{
 		return findRecursive(key, root);
 	}
 
 	private Object findRecursive( String key, TreeNode currNode)
 	{
-		//int ii = 1;
 		Object val = null;
 
 		if( currNode == null)
 		{
-			//System.out.println(ii);
-			throw new NoSuchElementException("Key " + key + " not found");
+			throw new NoSuchElementException();
 		}
 		else if( currNode.key.startsWith(key))
 		{
 			val = currNode.value;
+			matchNode = currNode;
 		}
 		else if( key.compareTo( currNode.key) < 0)
 		{
-			//ii++;
 			val = findRecursive( key, currNode.leftChild);
 		}
 		else
 		{
-			//ii++;
 			val = findRecursive( key, currNode.rightChild);
 		}
 		return val;
@@ -90,6 +89,36 @@ public class BinarySearchTree
 			currNode.rightChild = insertRecursive( key, value, currNode.rightChild);
 		}
 		return upDateNode;
+	}
+
+	/*public void findInLeftTreeMatch( String key)
+	{
+		find( key);
+		findRecursive( key, matchNode.leftChild);
+	}
+
+	public void findInRightTreeMatch( String key)
+	{
+		find( key);
+		findRecursive( key, matchNode.rightChild);
+	}*/
+
+	public  void traverseFromMatch( String key, LinkedList results)
+	{
+		recursiveTraverseFromMatch( matchNode, key, results);
+	}
+
+	private void recursiveTraverseFromMatch( TreeNode currNode, String key, LinkedList results)
+	{
+		if( currNode != null)
+		{
+			recursiveTraverseFromMatch( currNode.leftChild, key, results);
+			recursiveTraverseFromMatch( currNode.rightChild, key, results);
+			if( currNode.key.startsWith( key))
+			{
+				results.insertLast( currNode.value);
+			}
+		}
 	}
 
 }
