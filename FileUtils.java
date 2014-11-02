@@ -7,7 +7,7 @@ public class FileUtils
 {
 
 	//Method for choosing option 1. returns number of students read.
-	public static int loadFile( Student[] studentArray)
+	public static int loadFile( Student[] studentArray, BinarySearchTree tree)
 	{
 		boolean tryAgain;
 		int numRead = 0;
@@ -21,6 +21,7 @@ public class FileUtils
 			try
 			{
 				numRead = fillFromFile( studentArray, inputFile);
+				SearchAndSort.fillTree( tree, studentArray, numRead);
 				SearchAndSort.mergeSort( studentArray, numRead);
 			}
 			catch( IllegalArgumentException e)
