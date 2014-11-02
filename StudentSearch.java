@@ -42,14 +42,10 @@ public class StudentSearch
 				System.out.print("Choice:>");
 				selection = input.nextInt();
 
-				if( selection < 1 || selection > 5)
-				{
-					System.out.println("Please choose function 1 to 5.");
-				}
 				switch( selection)
 				{
 					case 1:
-						numOfStudents = FileUtils.loadFile( studentArray);
+						numOfStudents = FileUtils.loadFile( studentArray, searchTree);
 						break;
 					case 2:
 						results = new LinkedList();
@@ -59,6 +55,8 @@ public class StudentSearch
 						break;
 					case 4:
 						break;
+					default:
+						System.out.println("Please choose function 1 to 5.");
 				}
 			}
 			catch ( InputMismatchException e)
