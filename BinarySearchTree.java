@@ -12,7 +12,7 @@ public class BinarySearchTree
 		public TreeNode leftChild;
 		public TreeNode rightChild;
 
-		public TreeNode( String key, Object value)
+		private TreeNode( String key, Object value)
 		{
 			if( key == null)
 			{
@@ -39,10 +39,12 @@ public class BinarySearchTree
 
 	private Object findRecursive( String key, TreeNode currNode)
 	{
+		//int ii = 1;
 		Object val = null;
 
 		if( currNode == null)
 		{
+			//System.out.println(ii);
 			throw new NoSuchElementException("Key " + key + " not found");
 		}
 		else if( key.equals(currNode.key))
@@ -51,10 +53,12 @@ public class BinarySearchTree
 		}
 		else if( key.compareTo( currNode.key) < 0)
 		{
+			//ii++;
 			val = findRecursive( key, currNode.leftChild);
 		}
 		else
 		{
+			//ii++;
 			val = findRecursive( key, currNode.rightChild);
 		}
 		return val;
@@ -62,7 +66,7 @@ public class BinarySearchTree
 
 	public void insert( String key, Object value)
 	{
-		insertRecursive( key, value, root);
+		root = insertRecursive( key, value, root);
 	}
 
 	private TreeNode insertRecursive( String key, Object value, TreeNode currNode)
