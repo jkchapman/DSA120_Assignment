@@ -32,6 +32,16 @@ public class SearchAndSort
 		}
 	}
 
+    public static void fillTree( BinarySearchTree tree, Student[] A, int numOfStudents)
+    {
+
+        for(int ii = 0; ii < numOfStudents; ii++)
+        {
+            tree.insert( A[ii].getName(), A[ii]);
+        }
+
+    }
+
 	//binary search. returns the index of matched student no. -1 if not found.
     private static int binarySearch( Student[] sortedArray, int numOfStudents, int targetStudentNo)
     {
@@ -123,15 +133,5 @@ public class SearchAndSort
             A[kk] = tempArr[kk - leftIdx];
         }
     }//merge()
-
-    private static void fillTree( BinarySearchTree tree, Student[] A, int numOfStudents)
-    {
-
-        for(int ii = 0; ii < numOfStudents; ii++)
-        {
-            tree.insert( A[ii].getName(), A[ii]);
-        }
-
-    }
 
 }
