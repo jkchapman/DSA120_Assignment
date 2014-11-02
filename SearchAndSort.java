@@ -8,29 +8,68 @@ public class SearchAndSort
 
 	public static void searchSingleStudent( Student[] sortedArray, int numOfStudents, LinkedList results)
 	{
-		int targetStudentNo;
-		int matchIdx;
-		try
-		{
-			Scanner input = new Scanner(System.in);
-			System.out.print("Enter student number to find:>");
-			targetStudentNo = input.nextInt();
-			matchIdx = binarySearch( sortedArray, numOfStudents, targetStudentNo);
-			if (matchIdx == -1)
-			{
-				System.out.println("Student not found!");
-			}
-			else
-			{
-                results.insertLast( sortedArray[matchIdx]);
-				System.out.println( "" + sortedArray[matchIdx].getStudentNo() + "\t" + sortedArray[matchIdx].getName());
-			}
-		}
-		catch ( InputMismatchException e)
-		{
-			System.out.println("Error: Must enter a integer number to search for. Try again.");
-		}
+        if( sortedArray != null)
+        {
+    		int targetStudentNo;
+    		int matchIdx;
+    		try
+    		{
+    			Scanner input = new Scanner(System.in);
+    			System.out.print("Enter student number to find:>");
+    			targetStudentNo = input.nextInt();
+    			matchIdx = binarySearch( sortedArray, numOfStudents, targetStudentNo);
+    			if (matchIdx == -1)
+    			{
+    				System.out.println("Student not found!");
+    			}
+    			else
+    			{
+                    results.insertLast( sortedArray[matchIdx]);
+    				System.out.println( "" + sortedArray[matchIdx].getStudentNo() + "\t" + sortedArray[matchIdx].getName());
+    			}
+    		}
+    		catch ( InputMismatchException e)
+    		{
+    			System.out.println("Error: Must enter a integer number to search for. Try again.");
+    		}
+        }
+        else
+        {
+            System.out.println("Error: Must load a file first.");
+        }
 	}
+
+    public static void searchListOfStudents( BinarySearchTree tree, LinkedList results)
+    {
+
+        if( tree != null)
+        {
+            String key = null;
+            Scanner stringInput = new Scanner( System.in);
+            System.out.print("Enter name (or partial) to find:>");
+            key = stringInput.nextLine();
+            try
+            {
+                tree.find( key);
+                try
+                {
+                    tree.traverseFromMatch( key, results);
+                }
+                catch (Exception e) {}
+                results.printList();
+            }
+            catch ( Exception e)
+            {
+                System.out.println("Student not found!");
+            }
+
+        }
+        else
+        {
+            System.out.println("Error: Must load a file first.");
+        }
+
+    }
 
     public static void fillTree( BinarySearchTree tree, Student[] A, int numOfStudents)
     {
