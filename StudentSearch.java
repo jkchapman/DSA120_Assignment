@@ -22,6 +22,7 @@ public class StudentSearch
 
 	private static void mainMenu()
 	{
+		BinarySearchTree searchTree = new BinarySearchTree();
 		Student[] studentArray = new Student[10000];
 		int selection = 0;
 		int numOfStudents = 0;
