@@ -62,4 +62,15 @@ public class LinkedList
 		return (head == null);
 	}
 
+	public void printList()
+	{
+		ListNode currNode = head;
+		while( currNode != null)
+		{
+			Student currStudent = (Student)currNode.value;
+			System.out.println( "" + currStudent.getStudentNo() + "\t" + currStudent.getName());
+			currNode = currNode.next;
+		}
+	}
+
 }
