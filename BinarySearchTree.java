@@ -91,18 +91,6 @@ public class BinarySearchTree
 		return upDateNode;
 	}
 
-	/*public void findInLeftTreeMatch( String key)
-	{
-		find( key);
-		findRecursive( key, matchNode.leftChild);
-	}
-
-	public void findInRightTreeMatch( String key)
-	{
-		find( key);
-		findRecursive( key, matchNode.rightChild);
-	}*/
-
 	public  void traverseFromMatch( String key, LinkedList results)
 	{
 		recursiveTraverseFromMatch( matchNode, key, results);
