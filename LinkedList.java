@@ -1,3 +1,5 @@
+import java.io.*;
+
 public class LinkedList
 {
 
@@ -11,6 +13,19 @@ public class LinkedList
 		{
 			this.value = value;
 			next = null;
+		}
+
+		public String toString()
+		{
+			Student st = (Student)value;
+			return st.getStudentNo() + "\t" + st.getName();
+		}
+
+		public String toCSV()
+		{
+			Student st = (Student)value;
+			return st.getStudentNo() + "," + st.getName();
+
 		}
 	}
 
@@ -67,9 +82,25 @@ public class LinkedList
 		ListNode currNode = head;
 		while( currNode != null)
 		{
-			Student currStudent = (Student)currNode.value;
-			System.out.println( "" + currStudent.getStudentNo() + "\t" + currStudent.getName());
+			System.out.println( currNode.toString());
 			currNode = currNode.next;
+		}
+	}
+
+	public void writeList( FileWriter fw) throws IOException
+	{
+		ListNode currNode = head;
+		while( currNode != null)
+		{
+			try
+			{
+				fw.write( currNode.toCSV() + "\n");
+				currNode= currNode.next;
+			}
+			catch ( IOException e)
+			{
+				throw new IOException();
+			}
 		}
 	}
 
