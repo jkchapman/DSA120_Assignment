@@ -51,6 +51,81 @@ public class FileUtils
 		return numRead;
 	}
 
+	//saving method
+	public static void saveFile( LinkedList results)
+	{
+		if ( !results.isEmpty())
+		{
+			int selection = 0;
+			File outputFile;
+			FileWriter fw = null;
+			String outputFileName;
+			Scanner stringInput = new Scanner(System.in);
+
+			System.out.print("Enter output file name:>");
+			outputFileName = stringInput.nextLine();
+			if( !outputFileName.endsWith( ".csv"))
+			{
+				outputFileName = outputFileName + ".csv";
+			}
+
+			outputFile = new File( outputFileName);
+			if (outputFile.exists())
+			{
+				do
+				{
+					try
+					{
+						Scanner intInput = new Scanner( System.in);	
+						System.out.println("File already found! Would you like to overwrite or append?");
+						System.out.println("(1)\t - Overwrite");
+						System.out.println("(2)\t - Append");
+						System.out.println("(3)\t - Cancel");
+						System.out.print("Choice:>");
+						selection = intInput.nextInt();
+					}
+					catch( InputMismatchException e)
+					{
+						System.out.println("Please choose integer option 1 - 3");					
+					}
+				} while (selection < 1 || selection > 3);
+			}
+			try
+			{
+				if( selection != 3)
+				{
+					if( selection == 2)
+					{
+						fw = new FileWriter( outputFile, true);
+					}
+					else
+					{
+						fw = new FileWriter( outputFile);
+					}
+					results.writeList( fw);
+					fw.close();
+				}
+			}
+			catch ( IOException e)
+			{
+				if( outputFile != null)
+				{
+					try
+					{
+						fw.close();
+					}
+					catch ( IOException e2)
+					{}
+				}
+			}
+
+		}
+		else
+		{
+			System.out.println("No search results! Try a new search!");
+		}
+	}
+
 	//opens and loops through file, fills array of students, returns number read
 	//reference lecture 2, slide 25
 	private static int fillFromFile( Student[] studentArray, String inputFile)
@@ -84,7 +159,7 @@ public class FileUtils
 				{
 					fileStrm.close();
 				}
-				catch (IOException e2)
+				catch ( IOException e2)
 				{}
 			}
 			System.out.println("Error in processing file: " + e.getMessage());
