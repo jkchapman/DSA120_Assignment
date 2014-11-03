@@ -27,7 +27,7 @@ public class StudentSearch
 		int selection = 0;
 		int numOfStudents = 0;
 		Scanner input;
-		LinkedList results;
+		LinkedList results = new LinkedList();
 
 		do
 		{
@@ -58,6 +58,7 @@ public class StudentSearch
 						SearchAndSort.searchListOfStudents( searchTree, results);
 						break;
 					case 4:
+						FileUtils.saveFile( results);
 						break;
 					case 5:
 						break;
