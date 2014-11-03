@@ -25,7 +25,7 @@ public class SearchAndSort
     			else
     			{
                     results.insertLast( sortedArray[matchIdx]);
-    				System.out.println( "" + sortedArray[matchIdx].getStudentNo() + "\t" + sortedArray[matchIdx].getName());
+    				results.printList();
     			}
     		}
     		catch ( InputMismatchException e)
@@ -51,11 +51,7 @@ public class SearchAndSort
             try
             {
                 tree.find( key);
-                try
-                {
-                    tree.traverseFromMatch( key, results);
-                }
-                catch (Exception e) {}
+                tree.traverseFromMatch( key, results);
                 results.printList();
             }
             catch ( Exception e)
